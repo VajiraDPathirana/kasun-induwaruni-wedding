@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasun & Induwaruni | Royal Sri Lankan Wedding</title>
+    <meta name="description" content="Wedding Invitation of Kasun and Induwaruni">
+    
+    <!-- Google Fonts for Sinhala -->
+    <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* === Merged Luxury Theme === */
+        :root {
+            --pure-white: #ffffff;
+            --off-white: #fcfbf7; 
+            --cream: #f4efdf;
+            --mustard-gold: #C59B27;
+            --gold-light: #e6c561;
+            --gold-dark: #997312;
+            --light-green: #e9eee8; 
+            --green-accent: #6c8a74;
+            --charcoal: #1a1a1a; 
+            --text-muted: #5a5a5a;
+            --shadow-premium: 0 20px 50px rgba(197, 155, 39, 0.1);
+            --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05);
+            /* Envelope Variables */
+            --envelope-bg: #fdfbf7;
+            --envelope-flaps: #f4efdf;
+            /* Realistic Gold Foil Gradient */
+            --gold-foil: linear-gradient(135deg, var(--mustard-gold) 0%, var(--gold-light) 50%, var(--gold-dark) 100%);
+        }
+
+        body, html {
+            background-color: var(--off-white);
+            color: var(--charcoal);
+            font-family: 'Abhaya Libre', serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            /* Subtle Traditional Liyawala Watermark */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 100 100'%3E%3Cpath fill='%23c59b27' fill-opacity='0.05' d='M50 0c27.614 0 50 22.386 50 50s-22.386 50-50 50S0 77.614 0 50 22.386 0 50 0zm0 8c-23.196 0-42 18.804-42 42s18.804 42 42 42 42-18.804 42-42S73.196 8 50 8zm0 14c15.464 0 28 12.536 28 28s-12.536 28-28 28-28-12.536-28-28 12.536-28 28-28zm0 10c-9.941 0-18 8.059-18 18s8.059 18 18 18 18-8.059 18-18-8.059-18-18-18zm0 8c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8z'/%3E%3C/svg%3E");
+        }
+
+        /* Stops scrolling while intro is active */
+        body.intro-active {
+            overflow: hidden !important;
+        }
+
+        /* ========================================= */
+        /*          INTRO SCREEN STYLES              */
+        /* ========================================= */
+        #intro-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #050505;
+            transition: opacity 1s ease;
+        }
+
+        .background-media {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.6; 
+        }
+
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%); z-index: 2;
+        }
+
+        .intro-trigger {
+            position: absolute; z-index: 10; width: 100%; height: 100%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); transition: opacity 0.6s ease;
+        }
+
+        .envelope-container {
+            position: relative; width: 320px; height: 220px; cursor: pointer; border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8); background: var(--envelope-bg);
+            animation: pulseEnvelope 2s infinite;
+        }
+
+        .envelope-svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; border-radius: 4px; }
+        
+        .envelope-flap {
+            width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 3;
+            transform-origin: top; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); overflow: visible;
+        }
+
+        .wax-seal {
+            position: absolute; top: 130px; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: radial-gradient(circle, #e6c561, #997312);
+            border-radius: 50%; z-index: 4; display: flex; align-items: center; justify-content: center;
+            color: #fff; font-family: 'Abhaya Libre', serif; font-weight: 800; font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5), inset 0 0 5px rgba(255,255,255,0.4); transition: opacity 0.3s ease;
+        }
+
+        .tap-text {
+            color: var(--gold-light); font-size: 1.3rem; letter-spacing: 2px; margin-top: 40px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8); text-transform: uppercase;
+        }
+
+        .envelope-container.open .envelope-flap { transform: rotateX(180deg); z-index: 0; }
+        .envelope-container.open .wax-seal { opacity: 0; }
+        .envelope-container.open { animation: none; box-shadow: 0 5px 20px rgba(0,0,0,0.3); }
+
+        @keyframes pulseEnvelope {
+            0% { box-shadow: 0 0 0 0 rgba(197, 155, 39, 0.4); transform: scale(1); }
+            70% { box-shadow: 0 0 0 20px rgba(197, 155, 39, 0); transform: scale(1.02); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 155, 39, 0); transform: scale(1); }
+        }
+
+        .intro-content {
+            position: relative; z-index: 3; width: 100%; height: 100%;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px; animation: fadeIn 1s ease-out;
+        }
+
+        .intro-greeting { font-size: 2.2rem; color: var(--gold-light); letter-spacing: 2px; margin-bottom: 1rem; text-shadow: 0 4px 10px rgba(0,0,0,0.8); opacity: 0; animation: slideUp 1s ease-out 0.5s forwards; }
+        .intro-names { font-size: 5rem; font-weight: 800; background: var(--gold-foil); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 4px 20px rgba(0,0,0,0.5); margin-bottom: 3rem; opacity: 0; animation: slideUp 1s ease-out 1.2s forwards; }
+
+        .loader-container { width: 250px; height: 2px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden; margin-bottom: 2rem; opacity: 0; animation: fadeIn 1s ease-out 2s forwards; }
+        .loader-bar { height: 100%; width: 0%; background: var(--gold-foil); animation: loadProgress 8s linear 2s forwards; }
+
+        .skip-btn {
+            color: rgba(255, 255, 255, 0.6); text-decoration: none; font-family: sans-serif; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 2px; border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 20px; border-radius: 20px; transition: 0.3s; opacity: 0; animation: fadeIn 1s ease-out 2.5s forwards; cursor: pointer;
+        }
+        .skip-btn:hover { color: var(--pure-white); border-color: var(--gold-light); background: rgba(197, 155, 39, 0.2); }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes loadProgress { from { width: 0%; } to { width: 100%; } }
+
+        /* ========================================= */
+        /*         MAIN INVITATION STYLES            */
+        /* ========================================= */
+        #main-wrapper {
+            opacity: 0;
+            display: none;
+            transition: opacity 1s ease;
+        }
+
+        h1, h2, h3, h4 { font-weight: 800; }
+        .foil-text { background: var(--gold-foil); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0px 2px 4px rgba(0,0,0,0.05); }
+        .text-mustard { color: var(--mustard-gold) !important; }
+        .text-black { color: var(--charcoal) !important; }
+
+        .btn-elegant { background: var(--gold-foil); color: var(--pure-white) !important; padding: 10px 25px; border-radius: 4px; font-size: 1.1rem; font-weight: 700; text-decoration: none; transition: all 0.4s ease; display: inline-block; border: none; box-shadow: 0 5px 15px rgba(197, 155, 39, 0.3); }
+        .btn-elegant:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(197, 155, 39, 0.5); }
+
+        .hero-section { min-height: 100vh; background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.95)), url('images/WhatsApp\ Image\ 2026-06-03\ at\ 2.34.00\ PM.jpeg') center/cover fixed; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .hero-box { background: rgba(255, 255, 255, 0.95); padding: 5rem 3rem; border: 1px solid var(--mustard-gold); border-radius: 4px; box-shadow: var(--shadow-premium); position: relative; z-index: 1; backdrop-filter: blur(12px); width: 100%; }
+        .hero-box::before { content: ''; position: absolute; top: 8px; left: 8px; right: 8px; bottom: 8px; border: 2px solid var(--mustard-light); pointer-events: none; }
+
+        .ornament-corner { position: absolute; width: 50px; height: 50px; border: 4px solid var(--mustard-gold); z-index: 2; }
+        .tl { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+        .tr { top: -4px; right: -4px; border-left: none; border-bottom: none; }
+        .bl { bottom: -4px; left: -4px; border-right: none; border-top: none; }
+        .br { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+        .hero-title { font-size: 4.5rem; margin: 1.5rem 0; letter-spacing: 1px; line-height: 1.2; }
+
+        .countdown-wrapper { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 2rem; position: relative; z-index: 2; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .time-box { background: var(--pure-white); border: 1px solid var(--cream); padding: 15px 5px; border-radius: 4px; text-align: center; box-shadow: var(--shadow-card); position: relative; overflow: hidden; }
+        .time-box::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gold-foil); }
+        .time-box span.number { display: block; font-size: 2.2rem; font-weight: 800; color: var(--mustard-gold); line-height: 1; margin-bottom: 5px; }
+        .time-box span.label { font-size: 0.85rem; color: var(--charcoal); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+        .poem-box { background: var(--pure-white); border: 1px solid var(--cream); padding: 30px; border-radius: 4px; box-shadow: var(--shadow-card); position: relative; margin-bottom: 40px; }
+        .small-poem { font-size: 1.2rem; color: var(--text-muted); font-style: italic; line-height: 2; margin: 0 auto; }
+        .highlight-invitation { font-size: 2.8rem; font-weight: 800; display: inline-block; padding: 10px 0; position: relative; line-height: 1.3; }
+        .highlight-invitation::after { content: ''; position: absolute; bottom: 0; left: 10%; width: 80%; height: 3px; background: var(--gold-foil); border-radius: 2px; }
+        .warm-welcome { font-size: 1.4rem; color: var(--charcoal); font-weight: 600; margin-top: 1.5rem; letter-spacing: 0.5px; line-height: 1.6; }
+
+        .section-padding { padding: 90px 0; position: relative; }
+        .traditional-divider { height: 20px; background-image: radial-gradient(circle at center, var(--mustard-gold) 3px, transparent 4px); background-size: 20px 20px; background-position: center; background-repeat: repeat-x; margin: 2.5rem auto; width: 150px; max-width: 80%; }
+
+        .ritual-card { background: var(--pure-white); padding: 3.5rem 2rem; height: 100%; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); position: relative; z-index: 1; border: 1px solid var(--cream); box-shadow: var(--shadow-card); margin: 15px; }
+        .ritual-card-wrapper { position: relative; background: var(--off-white); border: 1px solid var(--mustard-light); border-radius: 4px; transition: 0.4s; height: 100%; }
+        .ritual-card-wrapper:hover { transform: translateY(-8px); box-shadow: var(--shadow-premium); }
+        .ritual-card-wrapper:hover .ritual-card { background: var(--light-green); }
+
+        .gallery-item { overflow: hidden; box-shadow: var(--shadow-card); background: var(--pure-white); padding: 8px; border: 1px solid var(--cream); position: relative; border-radius: 6px; }
+        .gallery-item img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.8s ease; border-radius: 4px; }
+        .gallery-item:hover img { transform: scale(1.08); }
+
+        .footer-section { background: var(--pure-white); padding: 5rem 0 3rem; text-align: center; border-top: 1px solid var(--cream); }
+        .rsvp-box { background: var(--pure-white); border: 2px dashed var(--mustard-light); padding: 2.5rem 1.5rem; transition: 0.3s; box-shadow: var(--shadow-card); border-radius: 6px; }
+        .rsvp-box:hover { box-shadow: var(--shadow-premium); border-style: solid; }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            /* Intro Mobile */
+            .intro-greeting { font-size: 1.6rem; }
+            .intro-names { font-size: 3.5rem; line-height: 1.2; }
+            .loader-container { width: 200px; }
+            .envelope-container { width: 280px; height: 195px; } 
+            .wax-seal { top: 115px; width: 55px; height: 55px; }
+
+            /* Main Page Mobile */
+            .hero-section { background-attachment: scroll !important; padding: 15px 10px; }
+            .hero-box { padding: 2.5rem 1rem; border-width: 2px; }
+            .hero-box::before { top: 6px; left: 6px; right: 6px; bottom: 6px; }
+            .ornament-corner { width: 35px; height: 35px; border-width: 3px; }
+            .tl { top: -3px; left: -3px; } .tr { top: -3px; right: -3px; } .bl { bottom: -3px; left: -3px; } .br { bottom: -3px; right: -3px; }
+            .hero-title { font-size: 2.8rem; margin: 1rem 0; }
+            .text-black { font-size: 1.1rem !important; }
+            .countdown-wrapper { gap: 8px; margin-top: 1.5rem; }
+            .time-box { padding: 10px 2px; }
+            .time-box span.number { font-size: 1.4rem; }
+            .time-box span.label { font-size: 0.7rem; letter-spacing: 0; }
+            .btn-elegant { width: 100%; max-width: 280px; margin: 0 auto; font-size: 1rem; padding: 12px 15px; }
+            .highlight-invitation { font-size: 1.8rem; line-height: 1.4; padding: 5px 0; }
+            .warm-welcome { font-size: 1.2rem; }
+            .small-poem { font-size: 1.1rem; }
+            .poem-box { padding: 20px 15px; margin-bottom: 25px; }
+            .section-padding { padding: 50px 0; }
+            .ritual-card { padding: 2rem 1.2rem; margin: 8px; }
+            .ritual-card h3 { font-size: 1.5rem !important; }
+            .ritual-card h2 { font-size: 2.2rem !important; }
+            .foil-text[style*="3.5rem"] { font-size: 2.5rem !important; }
+            .foil-text[style*="1.8rem"] { font-size: 1.4rem !important; }
+            .rsvp-box { padding: 2rem 1rem; margin-bottom: 10px; }
+            .rsvp-box a { font-size: 1.7rem !important; }
+        }
+    </style>
+</head>
+<body class="intro-active">
+
+    <!-- === CONTINUOUS BACKGROUND MUSIC === -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ========================================= -->
+    <!--            INTRO SCREEN WRAPPER           -->
+    <!-- ========================================= -->
+    <div id="intro-wrapper">
+        <video class="background-media" autoplay muted loop playsinline>
+            <source src="images/Couple_in_cartoon_manhwa_style_202606031540.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+
+        <!-- The Interactive Envelope Screen -->
+        <div class="intro-trigger" id="intro-trigger">
+            <div class="envelope-container" id="start-btn">
+                <svg viewBox="0 0 320 220" class="envelope-svg">
+                    <rect x="0" y="0" width="320" height="220" fill="#fdfbf7" />
+                    <polygon points="0,0 160,110 0,220" fill="#f4efdf" stroke="#d4af37" stroke-width="1.5" stroke-linejoin="round"/>
+                    <polygon points="320,0 160,110 320,220" fill="#f4efdf" stroke="#d4af37" stroke-width="1.5" stroke-linejoin="round"/>
+                    <polygon points="0,220 160,110 320,220" fill="#fcfbf7" stroke="#d4af37" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+                <svg viewBox="0 0 320 220" class="envelope-flap">
+                    <polygon points="0,0 160,130 320,0" fill="#fdfbf7" stroke="#d4af37" stroke-width="1.5" stroke-linejoin="round" filter="drop-shadow(0 3px 3px rgba(0,0,0,0.15))"/>
+                </svg>
+                <div class="wax-seal">K&I</div>
+            </div>
+            <p class="tap-text"><i class="fa-solid fa-hand-pointer me-2"></i> විවෘත කිරීමට click කරන්න</p>
+        </div>
+
+        <!-- Main Intro Content (Appears after envelope opens) -->
+        <div class="intro-content" id="intro-content">
+            <h3 class="intro-greeting">ශ්‍රී සුභ මංගලම්...!</h3>
+            <h1 class="intro-names">ඉඳුවරණි<br>සහ<br>කසුන්</h1>
+            <div class="loader-container">
+                <div class="loader-bar"></div>
+            </div>
+            <button id="skip-btn" class="skip-btn" style="background:transparent;">ආරාධනයට පිවිසෙන්න</button>
+        </div>
+    </div>
+
+
+    <!-- ========================================= -->
+    <!--            MAIN INVITATION PAGE           -->
+    <!-- ========================================= -->
+    <div id="main-wrapper">
+        
+        <header class="hero-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9 col-md-11">
+                        <div class="hero-box" data-aos="zoom-in" data-aos-duration="1200">
+                            <div class="ornament-corner tl"></div>
+                            <div class="ornament-corner tr"></div>
+                            <div class="ornament-corner bl"></div>
+                            <div class="ornament-corner br"></div>
+
+                            <h3 class="text-mustard" style="font-size: 1.5rem; letter-spacing: 2px;">ශ්‍රී සුභ මංගලම්...!</h3>
+                            <h1 class="hero-title foil-text">ඉඳුවරණි සහ කසුන්</h1>
+                            
+                            <p class="text-black" style="font-size: 1.2rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                                වර්ෂ 2026 ක් වූ ඇසළ මස 23 වන දින
+                            </p>
+                            
+                            <!-- Wedding Countdown Timer -->
+                            <div class="countdown-wrapper" id="countdown">
+                                <div class="time-box">
+                                    <span class="number" id="days">00</span><span class="label">දින</span>
+                                </div>
+                                <div class="time-box">
+                                    <span class="number" id="hours">00</span><span class="label">පැය</span>
+                                </div>
+                                <div class="time-box">
+                                    <span class="number" id="minutes">00</span><span class="label">මිනිත්තු</span>
+                                </div>
+                                <div class="time-box">
+                                    <span class="number" id="seconds">00</span><span class="label">තත්පර</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-3">
+                                <a href="#" class="btn-elegant" title="Add to Calendar">
+                                    <i class="fa-regular fa-calendar-plus me-2"></i> දින දර්ශනයට එක් කරන්න
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="section-padding">
+            <div class="container">
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-lg-8" data-aos="fade-up">
+                        <div class="poem-box">
+                            <p class="small-poem">
+                                "මඟුල් සක් හඬ මැද රන් හුයෙන් ඇඟිලි බැඳ<br>
+                                පති පතිනියන් වන නිමේෂයේ අප හා රැඳෙන්නට"
+                            </p>
+                        </div>
+                        <div class="traditional-divider"></div>
+                        <h2 class="highlight-invitation mt-3 mb-2 foil-text">ඔබට කෙරෙන ගෞරවනීය ආරාධනයයි</h2>
+                        
+                        <p class="warm-welcome px-2">
+                            ජීවිතයේ අලුත් ගමනක් අරඹන අපේ මඟුල් දවසට ඔබත් ඇවිත් යන්න එන්න.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row g-4 text-center mt-2">
+                    <div class="col-md-6" data-aos="fade-right">
+                        <div class="ritual-card-wrapper">
+                            <div class="ritual-card">
+                                <h3 class="mb-4 text-black" style="font-size: 1.6rem; letter-spacing: 1px;">මනාලිය</h3>
+                                <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                                    රත්නසිරි හෙට්ටිආරච්චි මැතිතුමාගේ<br>සහ<br>පුෂ්පා අයිරාංගනී මැතිණියගේ<br>ආදරණීය දියණිය
+                                </p>
+                                <h2 class="mt-4 foil-text" style="font-size: 2.8rem;">ඉඳුවරණි</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left">
+                        <div class="ritual-card-wrapper">
+                            <div class="ritual-card">
+                                <h3 class="mb-4 text-black" style="font-size: 1.6rem; letter-spacing: 1px;">මනාලයා</h3>
+                                <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8;">
+                                    වජිරපාණි පතිරජ මැතිතුමාගේ<br>සහ<br>දීපිකා සමන්මලී මැතිණියගේ<br>ආදරණීය දෙටු පුත්
+                                </p>
+                                <h2 class="mt-4 foil-text" style="font-size: 2.8rem;">කසුන්</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Couple Image Section -->
+        <section class="section-padding pt-0">
+            <div class="container">
+                <div class="row justify-content-center mb-0 pb-2">
+                    <div class="col-lg-9 col-md-11" data-aos="zoom-in" data-aos-duration="1000">
+                        <div class="text-center">
+                            <img src="images/Couple_in_Sri_Lankan_wedding_202606031440-removebg-preview.png" alt="Sri Lankan Wedding Rituals" class="img-fluid" style="border: none; box-shadow: none; background: transparent; max-width: 100%; height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+        <section class="section-padding" style="background-color: var(--light-green); position: relative; border-top: 1px solid var(--mustard-light); border-bottom: 1px solid var(--mustard-light);">
+            <div class="container">
+                <div class="row text-center mb-4">
+                    <div class="col-12" data-aos="fade-up">
+                        <h2 class="foil-text" style="font-size: 3.5rem;">මංගල චාරිත්‍ර</h2>
+                        <div class="traditional-divider mt-2 mb-4"></div>
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center g-4 text-center">
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="ritual-card-wrapper">
+                            <div class="ritual-card">
+                                <h3 class="mb-3 text-black" style="font-size: 2rem;">දිනය සහ ස්ථානය</h3>
+                                <p class="foil-text mt-3" style="font-size: 1.8rem; font-weight: 800;">2026 ජූලි 23</p>
+                                <p class="text-muted mt-2" style="font-size: 1.1rem; font-weight: 600;">The Glasgow Hotel<br><strong style="color: var(--green-accent);">Brilliance Ballroom</strong></p>
+                                
+                                <div class="mt-4 pt-2">
+                                    <a href="https://maps.google.com/?q=The+Glasgow+Hotel" target="_blank" class="btn-elegant">
+                                        <i class="fa-solid fa-location-dot me-2"></i> ස්ථානයට මාර්ගය
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="ritual-card-wrapper">
+                            <div class="ritual-card">
+                                <h3 class="mb-3 text-black" style="font-size: 2rem;">වේලාව</h3>
+                                <p class="text-muted mt-4" style="font-size: 1.4rem; font-weight: 600; line-height: 1.6;">
+                                    පූර්වභාග 9.30 සිට<br>අපරභාග 4.00 දක්වා
+                                </p>
+                                <div class="mt-4 pt-3" style="border-top: 1px solid var(--mustard-light);">
+                                    <p class="text-mustard" style="font-weight: 700; font-size: 1.2rem; margin: 0;">
+                                        (පෝරුවේ චාරිත්‍ර පූර්වභාග 10.00 ට)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="row text-center mb-4">
+                    <div class="col-12" data-aos="fade-up">
+                        <h2 class="foil-text" style="font-size: 3.5rem;">අපේ මතකයන්</h2>
+                        <div class="traditional-divider mt-2 mb-4"></div>
+                    </div>
+                </div>
+
+                <div class="row g-3 g-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-02 at 5.22.59 PM.jpeg" alt="Wedding Memory 1">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-03 at 2.33.53 PM.jpeg" alt="Wedding Memory 2">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-03 at 2.33.54 PM.jpeg" alt="Wedding Memory 3">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-03 at 2.34.00 PM.jpeg" alt="Wedding Memory 4">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-03 at 12.17.34 PM.jpeg" alt="Wedding Memory 5">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="gallery-item">
+                            <img src="images/WhatsApp Image 2026-06-03 at 4.09.42 PM.jpeg" alt="Wedding Memory 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section & Footer -->
+        <footer class="footer-section" id="rsvp">
+            <div class="container" data-aos="fade-up">
+                <h2 class="mb-4 text-black" style="font-size: 2.8rem;">පැමිණීම තහවුරු කිරීම</h2>
+                
+                <p class="mb-2 foil-text px-3" style="font-size: 1.3rem; font-weight: 700; line-height: 1.5;">
+                    ආදරයෙන් පිරුණු අපේ මංගල දිනයට ඔබේ පැමිණීම අපට මහත් සතුටකි.
+                </p>
+                <p class="mb-5 text-muted px-3" style="font-size: 1.1rem; line-height: 1.5;">
+                    කරුණාකර ඔබගේ පැමිණීම හෝ නොපැමිණීම <br class="d-md-none"><strong class="text-charcoal" style="font-weight: 800;">ජූලි 05 වනදාට පෙර</strong> දැනුම් දෙන්න.
+                </p>
+                
+                <div class="row justify-content-center g-3 g-md-4">
+                    <div class="col-md-5 col-12">
+                        <div class="rsvp-box">
+                            <h3 class="text-black" style="font-size: 1.6rem; letter-spacing: 1px;">පුෂ්පා</h3>
+                            <a href="tel:0718325317" class="foil-text text-decoration-none d-block mt-2" style="font-size: 2rem; font-weight: 800;">071-832 5317</a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        <div class="rsvp-box">
+                            <h3 class="text-black" style="font-size: 1.6rem; letter-spacing: 1px;">දීපිකා</h3>
+                            <a href="tel:0761042498" class="foil-text text-decoration-none d-block mt-2" style="font-size: 2rem; font-weight: 800;">076 104 2498</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Created By Details -->
+                <div class="mt-5 pt-4">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 5px;">&copy; 2026 Kasun & Induwaruni. All Rights Reserved.</p>
+                    <p class="foil-text" style="font-size: 1rem; font-weight: 700; letter-spacing: 0.5px;">Web Design by Irosha - 076 3010791</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Scripts for Logic & Animations -->
+    <script>
+        // Transition Function to go from Intro to Main Site
+        function transitionToMain() {
+            let introWrapper = document.getElementById("intro-wrapper");
+            let mainWrapper = document.getElementById("main-wrapper");
+            
+            // Fade out intro
+            introWrapper.style.opacity = '0';
+            
+            setTimeout(() => {
+                introWrapper.style.display = "none";
+                
+                // Allow scrolling on the main page
+                document.body.classList.remove("intro-active");
+                
+                // Show Main Wrapper
+                mainWrapper.style.display = "block";
+                
+                // Small delay to allow display:block to apply before fading in
+                setTimeout(() => {
+                    mainWrapper.style.opacity = '1';
+                    // Initialize AOS Scroll Animations only after the main page is visible
+                    AOS.init({ once: true, offset: 30, duration: 800 });
+                }, 50);
+                
+            }, 1000); // Wait 1 second for the fade out to finish
+        }
+
+        // --- Step 1: Open Envelope and Start Sequence ---
+        document.getElementById("start-btn").addEventListener("click", function() {
+            // Instantly Play the music!
+            let music = document.getElementById("bg-music");
+            music.play();
+
+            // Trigger Envelope Open Animation
+            this.classList.add("open");
+
+            // Wait for the envelope flap to open (600ms), then fade out the trigger wrapper
+            setTimeout(() => {
+                let triggerWrapper = document.getElementById("intro-trigger");
+                triggerWrapper.style.opacity = '0';
+                
+                // Wait for fade out to finish (600ms), then show text & loader
+                setTimeout(() => {
+                    triggerWrapper.style.display = "none";
+                    document.getElementById("intro-content").style.display = "flex";
+
+                    // Start the 10-second timer to transition to the main website
+                    setTimeout(transitionToMain, 10000);
+
+                }, 600);
+            }, 600);
+        });
+
+        // --- Step 2: Skip Button ---
+        document.getElementById("skip-btn").addEventListener("click", function() {
+            transitionToMain();
+        });
+
+        // --- Step 3: Wedding Countdown Timer Logic (Target: July 23, 2026) ---
+        const weddingDate = new Date("July 23, 2026 09:30:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<h3 class='foil-text mt-3' style='font-size:1.8rem;'>අද අපගේ මංගල දිනයයි!</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>
